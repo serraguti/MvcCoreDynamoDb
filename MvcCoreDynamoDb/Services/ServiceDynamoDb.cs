@@ -9,11 +9,9 @@ namespace MvcCoreDynamoDb.Services
     {
         private DynamoDBContext context;
 
-        public ServiceDynamoDb()
+        public ServiceDynamoDb(DynamoDBContext context)
         {
-            //A PARTIR DE UN CLIENTE, SE GENERA UN CONTEXT
-            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
-            this.context = new DynamoDBContext(client);
+            this.context = context;
         }
 
         public async Task CreateCocheAsync(Coche car)

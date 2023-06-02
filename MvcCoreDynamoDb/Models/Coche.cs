@@ -8,12 +8,14 @@ namespace MvcCoreDynamoDb.Models
         [DynamoDBHashKey]
         [DynamoDBProperty("idcoche")]
         public int IdCoche { get; set; }
-        [DynamoDBRangeKey]
+       //[DynamoDBRangeKey]
         [DynamoDBProperty("marca")]
         public string Marca { get; set; }
         [DynamoDBProperty("modelo")]
         public string Modelo { get; set; }
         [DynamoDBProperty("imagen")]
         public string Imagen { get; set; }
+        [DynamoDBProperty("motor")]
+        public Motor Motor { get; set; }
     }
 }
