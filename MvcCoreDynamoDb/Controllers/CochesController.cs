@@ -46,5 +46,17 @@ namespace MvcCoreDynamoDb.Controllers
             await this.service.CreateCocheAsync(car);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Buscar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Buscar(string marca)
+        {
+            List<Coche> coches = await this.service.SearchCochesAsync(marca);
+            return View(coches);
+        }
     }
 }

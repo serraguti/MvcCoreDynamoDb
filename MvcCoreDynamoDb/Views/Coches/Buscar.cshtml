@@ -4,17 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Buscar coches Marca</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<p>
-    <a asp-action="Buscar" asp-controller="Coches">Buscar coches</a>
-</p>
+<form method="post">
+    <label>Marca: </label>
+    <input type="text" name="marca" class="form-control"/>
+    <button class="btn btn-outline-dark">
+        Buscar coches
+    </button>
+</form>
+
 @if (Model != null)
 {
-    <table class="table">
+    <table class="table table-warning">
         <thead>
             <tr>
                 <th>
@@ -29,7 +31,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Imagen)
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -47,11 +48,7 @@
                     </td>
                     <td>
                         <img src="@item.Imagen"
-                         style="width: 300px; height:300px"/>
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details", new { id=item.IdCoche }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.IdCoche })
+                             style="width: 300px; height:300px" />
                     </td>
                 </tr>
             }

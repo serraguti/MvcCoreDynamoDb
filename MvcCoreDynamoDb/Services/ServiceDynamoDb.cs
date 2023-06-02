@@ -49,5 +49,18 @@ namespace MvcCoreDynamoDb.Services
             var cars = this.context.FromDocuments<Coche>(documents);
             return cars.ToList();
         }
+
+        public async Task<List<Coche>> SearchCochesAsync(string marca)
+        {
+            //DEBEMOS CREAR UNA COLECCION DE CONDICIONES QUE PODRIAMOS 
+            //ENVIAR A LA VEZ A NUESTRA BUSQUEDA PARA FILTRAR POR OR/AND
+            List<ScanCondition> conditions =
+                new List<ScanCondition>();
+            conditions.Add(new ScanCondition("Marca", ScanOperator.Equal
+                , marca));
+            var cars = await this.context.ScanAsync<Coche>
+                (conditions).GetRemainingAsync();
+            return cars.ToList();
+        }
     }
 }
